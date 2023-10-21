@@ -1,0 +1,17 @@
+---
+- name: yum_update
+  hosts: all
+  tasks:
+    - name: yum_update
+      yum:
+        name: '*'
+        state: latest
+    - name: yum仓库
+      shell: yum repolist
+      register: output
+      changed_when: false
+    - name: 输出
+      debug:
+        msg: "{{ output }}"
+        
+      
